@@ -9,9 +9,10 @@
             box-sizing: border-box;
         }
 
-        td,
+        input[type=text],
         select,
-        textarea {
+        textarea,
+        a {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -24,9 +25,8 @@
             display: inline-block;
         }
 
-        
-
-        td {
+        input[type=submit],
+        a {
             background-color: #4CAF50;
             color: white;
             padding: 12px 20px;
@@ -36,7 +36,7 @@
             float: right;
         }
 
-        td:hover {
+        a:hover {
             background-color: #45a049;
         }
 
@@ -58,6 +58,12 @@
             margin-top: 6px;
         }
 
+        .col-85 {
+            float: left;
+            width: 85%;
+            margin-top: 60px;
+        }
+
         /* Clear floats after the columns */
         .row:after {
             content: "";
@@ -65,12 +71,21 @@
             clear: both;
         }
 
+        .eliminar a {
+            color: red;
+        }
+
+        .row .eliminar {
+            background-color: red;
+        }
+
         /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
         @media screen and (max-width: 600px) {
 
             .col-25,
             .col-75,
-            td {
+            input[type=submit],
+            a {
                 width: 100%;
                 margin-top: 0;
             }
@@ -86,35 +101,71 @@
         ?>
     <div class="container">
         <a href="insertar.php">Nuevo video</a>
-        <table>
+        <form>
             <thead>
-                <tr>
-                    <label>ID</label>
-                    <label>Titulo</label>
-                    <label>Link</label>
-                    <label>Categoria</label>
-                    <label>Descripcion</label>
-                </tr>
             <tbody>
                 <?php 
                             if ($resultado) { 
                                 while ($filas=mysqli_fetch_assoc($resultado)) {
                         ?>
                 <tr>
-                    <td><?php echo $filas['ID'] ?></td>
-                    <td><?php echo $filas['Titulo'] ?></td>
-                    <td><?php echo $filas['Link'] ?></td>
-                    <td><?php echo $filas['Categoria'] ?></td>
-                    <td><?php echo $filas['Descripcion'] ?></td>
-                    <td>
-                        <a href="editar.php?id=<?php echo $filas['ID'] ?>">Editar</a>
-                        <a href="eliminar.php?id=<?php echo $filas['ID'] ?>">Eliminar</a>
-                    </td>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>ID</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['ID'] ?>" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>Titulo</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['Titulo'] ?>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>Link</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['Link'] ?>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>Categoria</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['Categoria'] ?>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label>Descripcion</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['Descripcion'] ?>"
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="editar">
+                            <a href="editar.php?id=<?php echo $filas['ID'] ?>">Editar</a>
+                        </div>
+                        <div class="eliminar">
+                            <a href="eliminar.php?id=<?php echo $filas['ID'] ?>">Eliminar</a>
+                        </div>
+                    </div>
                 </tr>
                 <?php } }?>
             </tbody>
             </thead>
-        </table>
+        </form>
     </div>
 </body>
 
