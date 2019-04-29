@@ -25,7 +25,7 @@
         }
 
         input[type=submit] {
-            background-color: #4CAF50;
+            background-color: #ff7300;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -37,11 +37,21 @@
         input[type=submit]:hover {
             background-color: #45a049;
         }
+        
+        .container .editar {
+            background-color: #ff7300;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+        }
 
         .container {
             border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
+            background-color: #777;
+            padding: 20%;
         }
 
         .col-25 {
@@ -88,7 +98,9 @@
             <label>Descripción:</label>
             <input type="text" name="txtdescripcion"><br>
             <input type="submit" value="Agregar">
-            <a href="index.php">Regresar</a>
+            <div class="editar">
+                <a href="index.php">Regresar</a>
+            </div>
         </form>
     </div>
     <?php

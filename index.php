@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <meta charset="utf-8" />
     <title>CRUD PARA VIDEOS</title>
     <style>
         * {
@@ -27,7 +28,7 @@
 
         input[type=submit],
         a {
-            background-color: #4CAF50;
+            background-color: #ff7300;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -36,13 +37,24 @@
             float: right;
         }
 
+        .row .nuevo {
+            background-color: #ff7300;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        
+
         a:hover {
-            background-color: #45a049;
+            background-color: #ff7300;
         }
 
         .container {
             border-radius: 5px;
-            background-color: #f2f2f2;
+            background-color: #777;
             padding: 20px;
         }
 
@@ -64,7 +76,6 @@
             margin-top: 60px;
         }
 
-        /* Clear floats after the columns */
         .row:after {
             content: "";
             display: table;
@@ -74,12 +85,15 @@
         .eliminar a {
             color: red;
         }
+        .eliminar:hover a{
+            background-color: red;
+            color: white;
+        }
 
         .row .eliminar {
             background-color: red;
         }
 
-        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
         @media screen and (max-width: 600px) {
 
             .col-25,
@@ -95,13 +109,18 @@
 
 <body>
     <?php
+            header('Content-Type: text/html; charset=utf-8');
             include 'conexion.php';
             $sql="SELECT * FROM `video`";
             $resultado=mysqli_query($con,$sql);   
         ?>
     <div class="container">
-        <a href="insertar.php">Nuevo video</a>
-        <form>
+        <div class="row">
+            <div class="nuevo">
+                <a href="insertar.php">Nuevo video</a>
+            </div>
+        </div>
+        <form accept-charset="utf-8">
             <thead>
             <tbody>
                 <?php 
@@ -119,7 +138,7 @@
                     </div>
                     <div class="row">
                         <div class="col-25">
-                            <label>Titulo</label>
+                            <label>Título</label>
                         </div>
                         <div class="col-75">
                             <input type="text" id="fname" name="firstname" value="<?php echo $filas['Titulo'] ?>"
