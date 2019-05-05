@@ -10,7 +10,7 @@ if($titulo!=null||$link!=null||$cat!=null||$des!=null){
     print($sql);
     mysqli_query($con, $sql);
     if($titulo!=null){
-        header("location:index.php");
+        header("location:index.html");
     }
 }
 ?>

@@ -4,5 +4,5 @@
     $sql="DELETE FROM video WHERE ID='".$id."'";
     print($sql);
     mysqli_query($con, $sql);
-    header('location:index.php');
+    header('location:index.html');
 ?>

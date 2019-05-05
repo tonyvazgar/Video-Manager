@@ -6,10 +6,23 @@
     <meta charset="utf-8" />
     <title>CRUD PARA VIDEOS</title>
     <style>
+        @font-face {
+            font-family: udlaptext;
+            src: url('udlaptext-reg.otf');
+        }
         * {
             box-sizing: border-box;
+            font-family: 'udlaptext', "Open Sans", sans-serif;
         }
-
+        tbody{
+            display:block;
+            border: 2px solid black;
+            border-collapse: separate;
+            border-spacing: 40px; 
+        }
+        h1 {
+            text-align: center;
+        }
         input[type=text],
         select,
         textarea,
@@ -19,6 +32,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             resize: vertical;
+            text-decoration: none;
         }
 
         label {
@@ -35,12 +49,12 @@
             border-radius: 4px;
             cursor: pointer;
             float: right;
+            text-align: center;
         }
 
         .row .nuevo {
             background-color: #ff7300;
             color: white;
-            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -54,8 +68,8 @@
 
         .container {
             border-radius: 5px;
-            background-color: #777;
-            padding: 20px;
+            background-color: #777777;
+            padding: 30px;
         }
 
         .col-25 {
@@ -70,6 +84,7 @@
             margin-top: 6px;
         }
 
+        tr {background-color: #000;}
         .col-85 {
             float: left;
             width: 85%;
@@ -92,7 +107,16 @@
 
         .row .eliminar {
             background-color: red;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
         }
+        /* form {
+            border-radius: 4px;
+            border: 1px solid black;
+        } */
 
         @media screen and (max-width: 600px) {
 
@@ -115,6 +139,7 @@
             $resultado=mysqli_query($con,$sql);   
         ?>
     <div class="container">
+        <h1>Lista de videos</h1>
         <div class="row">
             <div class="nuevo">
                 <a href="insertar.php">Nuevo video</a>
@@ -127,15 +152,15 @@
                             if ($resultado) { 
                                 while ($filas=mysqli_fetch_assoc($resultado)) {
                         ?>
-                <tr>
-                    <div class="row">
+                <form>
+                    <!-- <div class="row">
                         <div class="col-25">
                             <label>ID</label>
                         </div>
                         <div class="col-75">
                             <input type="text" id="fname" name="firstname" value="<?php echo $filas['ID'] ?>" readonly>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-25">
                             <label>Título</label>
@@ -168,19 +193,18 @@
                             <label>Descripcion</label>
                         </div>
                         <div class="col-75">
-                            <input type="text" id="fname" name="firstname" value="<?php echo $filas['Descripcion'] ?>"
-                                readonly>
+                            <textarea type="text" id="fname" name="firstname" readonly><?php echo $filas['Descripcion'] ?></textarea>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="editar">
+                            <div class="eliminar">
+                                <a href="eliminar.php?id=<?php echo $filas['ID'] ?>">Eliminar</a>
+                            </div>
+                        <div class="nuevo">
                             <a href="editar.php?id=<?php echo $filas['ID'] ?>">Editar</a>
                         </div>
-                        <div class="eliminar">
-                            <a href="eliminar.php?id=<?php echo $filas['ID'] ?>">Eliminar</a>
-                        </div>
                     </div>
-                </tr>
+                </form>
                 <?php } }?>
             </tbody>
             </thead>
