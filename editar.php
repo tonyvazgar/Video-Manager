@@ -9,6 +9,7 @@
             font-family: myFont;
             src: url('udlaptext-reg.otf');
         }
+
         * {
             box-sizing: border-box;
             font-family: 'myFont', "Open Sans", sans-serif;
@@ -24,7 +25,8 @@
             border-radius: 4px;
             resize: vertical;
         }
-        input[type=date]{
+
+        input[type=date] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -57,10 +59,11 @@
             cursor: pointer;
             float: right;
         }
-        
-        h1{
+
+        h1 {
             text-align: center;
         }
+
         .container .editar {
             background-color: #ff7300;
             color: white;
@@ -71,9 +74,10 @@
         }
 
         a {
-            
+
             text-decoration: none;
         }
+
         .container {
             border-radius: 5px;
             background-color: #777;
@@ -108,7 +112,8 @@
         .eliminar a {
             color: red;
         }
-        .eliminar:hover a{
+
+        .eliminar:hover a {
             background-color: red;
             color: white;
         }
@@ -126,7 +131,8 @@
                 width: 100%;
                 margin-top: 0;
             }
-            .editar{
+
+            .editar {
                 width: 100%;
                 margin-top: 0;
             }
@@ -164,7 +170,7 @@
             <input type="text" name="txtcamarografos" value="<?php echo $fila['camarografo'] ?>"><br>
             <label>Fecha de edición:</label>
             <input type="date" name="txtfecha" value="<?php echo $fila['fecha'] ?>"><br>
-            
+
             <input type="submit" value="Actualizar">
             <div class="editar">
                 <a href="index.html">Regresar</a>

@@ -9,6 +9,7 @@
             font-family: myFont;
             src: url('udlaptext-reg.otf');
         }
+
         * {
             box-sizing: border-box;
             font-family: 'myFont', "Open Sans", sans-serif;
@@ -16,7 +17,8 @@
 
         input[type=text],
         select,
-        textarea, input[type=date] {
+        textarea,
+        input[type=date] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -42,13 +44,16 @@
         h1 {
             text-align: center;
         }
+
         input[type=submit]:hover {
             background-color: #45a049;
         }
-        a{
-            
+
+        a {
+
             text-decoration: none;
         }
+
         .container .editar {
             background-color: #ff7300;
             color: white;
@@ -94,9 +99,10 @@
                 width: 100%;
                 margin-top: 0;
             }
+
             .editar {
                 width: 100%;
-                margin-top: 0; 
+                margin-top: 0;
             }
         }
     </style>
@@ -104,7 +110,7 @@
 
 <body>
     <div class="container">
-    <h1>Insertar video</h1>
+        <h1>Insertar video</h1>
         <form>
             <label>Titulo:</label>
             <input type="text" name="txttitulo" required><br>
